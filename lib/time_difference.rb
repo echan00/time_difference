@@ -68,14 +68,14 @@ class TimeDifference
         part = part.singularize
       end
 
-      diff_parts << "#{quantity} #{part}"
+      diff_parts << "#{quantity} #{part}" unless part.to_s == 'Seconds'
     end
 
     last_part = diff_parts.pop
     if diff_parts.empty?
       return last_part
     else
-      return [diff_parts.join(', '), last_part].join(' and ')
+      return [diff_parts.join(', '), last_part].join(', ')
     end
   end
 
